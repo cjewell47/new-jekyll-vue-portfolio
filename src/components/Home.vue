@@ -1,10 +1,10 @@
 <template>
-  <h1>Jekyll-Vue Template</h1>
+  <h1>Home</h1>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld'
+  name: 'Home'
 }
 </script>
 

@@ -20,7 +20,8 @@
   "author": "Christopher Murphy",
   "license": "MIT",
   "dependencies": {
-    "vue": "^2.5.21"
+    "vue": "^2.5.21",
+    "vue-router": "^3.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
