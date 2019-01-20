@@ -58,6 +58,38 @@ a {
       color: #000;
       font-size: 48px;
       margin: 0;
+      z-index: 0;
+      position: relative;
+      @supports (clip-path: polygon(0% 100%, 100% 100%, 100% 40%, 0 60%)) {
+        color: transparent;
+        &:focus {
+          outline: none;
+        }
+        &::before,
+        &::after {
+          content: attr(data-section);
+          position: absolute;
+          top: 0;
+          left: 0;
+          transition: all 0.7s ease;
+        }
+        &::before {
+          color: #000;
+          clip-path: polygon(0% 100%, 100% 100%, 100% 40%, 0 60%);
+        }
+        &::after {
+          color: #000;
+          clip-path: polygon(0 0, 100% 0%, 100% 36%, 0 56%);
+        }
+        &:hover {
+          &::before {
+            transform: translate(8px, 2%);
+          }
+          &::after {
+            transform: translate(-8px, -2%);
+          }
+        }
+      }
     }
     li {
       list-style: none;
