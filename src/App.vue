@@ -42,15 +42,15 @@ body {
   }
   @media screen and (min-width: 768px) {
     .router-anim-enter-active {
-      animation: coming 0.8s;
-      animation-delay: 0.4s;
-      -webkit-animation: coming 0.8s;
-      -webkit-animation-delay: 0.4s;
+      animation: coming 0.6s;
+      animation-delay: 0.3s;
+      -webkit-animation: coming 0.6s;
+      -webkit-animation-delay: 0.3s;
       opacity: 0;
     }
     .router-anim-leave-active {
-      animation: going 0.8s;
-      -webkit-animation: going 0.8s;
+      animation: going 0.6s;
+      -webkit-animation: going 0.6s;
     }
   }
 }

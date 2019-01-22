@@ -36,7 +36,7 @@
       </div>
       <div class="burger-menu">
         <router-link to="/" exact>
-          <h2>Charles Jewell</h2>
+          <h2 @click="closeMenu">Charles Jewell</h2>
         </router-link>
         <svg
           class="ham hamRotate ham4"
@@ -78,7 +78,6 @@ export default {
       this.menu = !this.menu;
     },
     closeMenu: function() {
-      console.log('closeeeee')
       this.menu = false;
     }
   }
