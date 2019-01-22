@@ -40,7 +40,8 @@ body {
     max-width: 900px;
     margin: auto;
   }
-  .router-anim-enter-active {
+  @media screen and (min-width: 768px) {
+    .router-anim-enter-active {
       animation: coming 0.8s;
       animation-delay: 0.4s;
       -webkit-animation: coming 0.8s;
@@ -51,6 +52,7 @@ body {
       animation: going 0.8s;
       -webkit-animation: going 0.8s;
     }
+  }
 }
 
 @keyframes going {
@@ -95,7 +97,6 @@ body {
   }
 }
 
-
 @keyframes Gradient {
   0% {
     background-position: 0% 50%;
@@ -107,7 +108,6 @@ body {
     background-position: 0% 50%;
   }
 }
-
 
 @-webkit-keyframes Gradient {
   0% {

@@ -57,7 +57,7 @@
         </svg>
       </div>
     </div>
-    <mob-menu v-if="menu"></mob-menu>
+    <mob-menu v-if="menu" @close-menu="closeMenu"></mob-menu>
   </div>
 </template>
 
@@ -76,6 +76,10 @@ export default {
   methods: {
     openMenu: function() {
       this.menu = !this.menu;
+    },
+    closeMenu: function() {
+      console.log('closeeeee')
+      this.menu = false;
     }
   }
 };
