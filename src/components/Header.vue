@@ -218,6 +218,7 @@ a {
   }
   .burger-menu {
     display: none;
+    overflow: hidden;
     ham {
       cursor: pointer;
       -webkit-tap-highlight-color: transparent;

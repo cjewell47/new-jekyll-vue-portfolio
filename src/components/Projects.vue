@@ -75,5 +75,82 @@ h1 {
 .page {
   display: flex;
   justify-content: center;
+  max-width: 1100px;
+  flex-direction: column;
+  align-items: center;
+}
+.projects-container {
+  margin: 20px auto;
+  width: 500px;
+  height: 500px;
+  display: flex;
+  flex-wrap: wrap; 
+  .image-box {
+    position: relative;
+    height: 250px;
+    width: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    object-fit: cover;
+    .img-portfolio {
+      height: 250px;
+      position: absolute;
+      transition: opacity 0.5s ease-in-out;
+      -webkit-transition: opacity 0.5s ease-in-out;
+      -moz-transition: opacity 0.5s ease-in-out;
+      &[class*="img-2-"] {
+        opacity: 0;
+        &:hover ~ .project-link {
+          opacity: 1;
+          top: 150px;
+        }
+      }
+    }
+    &:hover > .img-portfolio[class*="img-2-"] {
+      opacity: 1;
+    }
+    .project-link {
+      width: 200px;
+      height: 45px;
+      background-color: #000;
+      color: #fff;
+      position: absolute;
+      text-align: center;
+      z-index: 99;
+      top: 235px;
+      opacity: 0;
+      transition: all 0.5s ease-in-out;
+      -webkit-transition: all 0.5s ease-in-out;
+      -moz-transition: all 0.5s ease-in-out;
+      p {
+        margin-top: 11px;
+      }
+      a {
+        color: #fff;
+        text-decoration: none;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+      &:hover {
+        opacity: 1;
+        top: 150px;
+      }
+    }
+  }
+  @media screen and (max-width: 767px) {
+    width: 250px;
+    height: 900px;
+    .image-box {
+      .img-portfolio {
+        &[class*="img-2-"] {
+          // opacity: 1;
+          // clip-path: polygon(0% 0%, 100% 0%, 50% 50%, 0% 100%);
+        }
+      }
+    }
+  }
 }
 </style>
