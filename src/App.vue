@@ -1,7 +1,9 @@
 <template>
   <div>
     <app-header></app-header>
-    <router-view></router-view>
+    <transition name="router-anim" mode="out-in">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 
@@ -33,9 +35,69 @@ body {
   -webkit-animation: Gradient 10s ease infinite;
   -moz-animation: Gradient 10s ease infinite;
   animation: Gradient 10s ease infinite;
+  .page {
+    // position: fixed;
+    width: inherit;
+    max-width: 900px;
+    margin: auto;
+  }
+  .router-anim-enter-active {
+      animation: coming 0.8s;
+      animation-delay: 0.4s;
+      -webkit-animation: coming 0.8s;
+      -webkit-animation-delay: 0.4s;
+      opacity: 0;
+    }
+    .router-anim-leave-active {
+      animation: going 0.8s;
+      -webkit-animation: going 0.8s;
+    }
 }
 
-@-webkit-keyframes Gradient {
+@keyframes going {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes going {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+}
+
+@keyframes coming {
+  from {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes coming {
+  from {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+
+@keyframes Gradient {
   0% {
     background-position: 0% 50%;
   }
@@ -47,7 +109,8 @@ body {
   }
 }
 
-@keyframes Gradient {
+
+@-webkit-keyframes Gradient {
   0% {
     background-position: 0% 50%;
   }

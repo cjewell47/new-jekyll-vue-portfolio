@@ -16,11 +16,56 @@
     max-width: 600px;
     text-align: center;
   }
+
   h1 {
     margin: 30px 0;
     font-size: 4em;
     line-height: 1;
     letter-spacing: -1px;
+  }
+
+  body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    font-family: "futura", sans-serif;
+    font-style: italic;
+    font-weight: 300;
+    background: #f7797d;
+    background: -webkit-linear-gradient(to right, #f7797d, #fbd786, #c6ffdd);
+    background: linear-gradient(to right, #f7797d, #fbd786, #c6ffdd);
+    background-size: 300% 300%;
+    -webkit-animation: Gradient 10s ease infinite;
+    -moz-animation: Gradient 10s ease infinite;
+    animation: Gradient 10s ease infinite;
+  }
+
+  @-webkit-keyframes Gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  @keyframes Gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+
+    100% {
+      background-position: 0% 50%;
+    }
   }
 </style>
 
@@ -30,9 +75,8 @@
   <p><strong>Page not found :(</strong></p>
   <p>The requested page could not be found.</p>
 </div>
-
   </div>
-  <script type="text/javascript" src="/dist/vendor.aaee40759dd20a17a022.js"></script><script type="text/javascript" src="/dist/main.1a22eb66e2e6b963361c.js"></script>
+  <script type="text/javascript" src="/dist/vendor.aaee40759dd20a17a022.js"></script><script type="text/javascript" src="/dist/main.4a7329070bc559255611.js"></script>
 </body>
 
 </html>

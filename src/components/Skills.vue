@@ -1,5 +1,7 @@
 <template>
-  <h1>Skills</h1>
+  <div class="page">
+    <h1>Skills</h1>
+  </div>
 </template>
 
 <script>
