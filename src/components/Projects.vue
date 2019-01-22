@@ -145,10 +145,10 @@ h1 {
     height: 900px;
     .image-box {
       .img-portfolio {
-        &[class*="img-2-"] {
+        // &[class*="img-2-"] {
           // opacity: 1;
           // clip-path: polygon(0% 0%, 100% 0%, 50% 50%, 0% 100%);
-        }
+        // }
       }
     }
   }
