@@ -61,7 +61,12 @@ a {
       z-index: 0;
       position: relative;
       @supports (clip-path: polygon(0% 100%, 100% 100%, 100% 40%, 0 60%)) {
-        color: transparent;
+        color: #000;
+        transition: color 1.5s ease;
+        &:hover {
+          color: transparent;
+          transition: color 0.2s ease;
+        }
         &:focus {
           outline: none;
         }
