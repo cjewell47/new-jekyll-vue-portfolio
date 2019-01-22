@@ -13,7 +13,7 @@ export default [{
   component: skills
 },
 {
-  path: '/about',
+  path: '/about-me',
   component: about
 },
 {

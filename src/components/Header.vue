@@ -1,44 +1,83 @@
 <template>
-  <div class="items-wrap">
-    <div class="items-container">
-      <router-link to="/" exact>
-        <h1 data-section="Charles Jewell">Charles Jewell</h1>
-      </router-link>
-      <li>
-        <router-link to="/about" exact>
-          <div class="header-item">
-            <p>About</p>
-          </div>
+  <div>
+    <div class="items-wrap">
+      <div class="items-container">
+        <router-link to="/" exact>
+          <h1 data-section="Charles Jewell">Charles Jewell</h1>
         </router-link>
-      </li>
-      <li>
-        <router-link to="/skills" exact>
-          <div class="header-item">
-            <p>Skills</p>
-          </div>
+        <li>
+          <router-link to="/about-me" exact>
+            <div class="header-item">
+              <p>About</p>
+            </div>
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/skills" exact>
+            <div class="header-item">
+              <p>Skills</p>
+            </div>
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/projects" exact>
+            <div class="header-item">
+              <p>Projects</p>
+            </div>
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/contact" exact>
+            <div class="header-item">
+              <p>Contact</p>
+            </div>
+          </router-link>
+        </li>
+      </div>
+      <div class="burger-menu">
+        <router-link to="/" exact>
+          <h2>Charles Jewell</h2>
         </router-link>
-      </li>
-      <li>
-        <router-link to="/projects" exact>
-          <div class="header-item">
-            <p>Projects</p>
-          </div>
-        </router-link>
-      </li>
-      <li>
-        <router-link to="/contact" exact>
-          <div class="header-item">
-            <p>Contact</p>
-          </div>
-        </router-link>
-      </li>
+        <svg
+          class="ham hamRotate ham4"
+          viewBox="0 0 100 100"
+          width="80"
+          @click="openMenu"
+          v-bind:class="{ active: menu }"
+        >
+          <path
+            class="line top"
+            d="m 70,33 h -40 c 0,0 -8.5,-0.149796 -8.5,8.5 0,8.649796 8.5,8.5 8.5,8.5 h 20 v -20"
+          ></path>
+          <path class="line middle" d="m 70,50 h -40"></path>
+          <path
+            class="line bottom"
+            d="m 30,67 h 40 c 0,0 8.5,0.149796 8.5,-8.5 0,-8.649796 -8.5,-8.5 -8.5,-8.5 h -20 v 20"
+          ></path>
+        </svg>
+      </div>
     </div>
+    <mob-menu v-if="menu"></mob-menu>
   </div>
 </template>
 
 <script>
+import mobMenu from "./MobMenu.vue";
 export default {
-  name: "Home"
+  name: "Home",
+  components: {
+    "mob-menu": mobMenu
+  },
+  data() {
+    return {
+      menu: false
+    };
+  },
+  methods: {
+    openMenu: function() {
+      this.menu = !this.menu;
+    }
+  }
 };
 </script>
 
@@ -171,6 +210,59 @@ a {
       &.current p {
         opacity: 0;
         transform: rotate(45deg);
+      }
+    }
+  }
+  .burger-menu {
+    display: none;
+    ham {
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      transition: transform 400ms;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+    .hamRotate.active {
+      transform: rotate(45deg);
+    }
+    .hamRotate180.active {
+      transform: rotate(180deg);
+    }
+    .line {
+      fill: none;
+      transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
+      stroke: #000;
+      stroke-width: 5.5;
+    }
+    .ham4 .top {
+      stroke-dasharray: 40 121;
+    }
+    .ham4 .bottom {
+      stroke-dasharray: 40 121;
+    }
+    .ham4.active .top {
+      stroke-dashoffset: -68px;
+    }
+    .ham4.active .bottom {
+      stroke-dashoffset: -68px;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    height: 120px;
+    .items-container {
+      display: none;
+    }
+    .burger-menu {
+      height: 120px;
+      padding: 0 0 0 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      h2 {
+        font-size: 28px;
+        color: #000;
       }
     }
   }

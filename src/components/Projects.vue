@@ -16,4 +16,8 @@ h1 {
   color: $gray;
   font-size: 2rem;
 }
+.page {
+  display: flex;
+  justify-content: center
+}
 </style>

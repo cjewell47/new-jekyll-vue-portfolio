@@ -36,7 +36,6 @@ body {
   -moz-animation: Gradient 10s ease infinite;
   animation: Gradient 10s ease infinite;
   .page {
-    // position: fixed;
     width: inherit;
     max-width: 900px;
     margin: auto;
