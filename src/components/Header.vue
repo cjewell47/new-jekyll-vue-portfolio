@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="Header">
     <div class="items-wrap">
       <div class="items-container">
         <router-link to="/" exact>
@@ -85,6 +85,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.Header {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 120px;
+  z-index: 5;
+}
 a {
   text-decoration: none;
 }
@@ -118,7 +125,7 @@ a {
           position: absolute;
           top: 0;
           left: 0;
-          transition: all 0.7s ease;
+          transition: all 0.5s ease;
         }
         &::before {
           color: #000;

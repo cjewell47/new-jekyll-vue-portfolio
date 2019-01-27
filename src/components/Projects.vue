@@ -1,6 +1,13 @@
 <template>
   <div class="page">
     <h1>Projects</h1>
+    <p class="under-h1">
+      View all of my personal projects on
+      <a
+        data-text="Github"
+        href="https://github.com/cjewell47"
+      >Github</a>
+    </p>
     <div class="projects-container">
       <div class="image-box">
         <img class="img-portfolio img-1" src="img/BlendLifeBW-min.png">
@@ -72,6 +79,21 @@ h1 {
   color: $gray;
   font-size: 2rem;
 }
+.under-h1 a {
+  color: darkslategrey;
+  position: relative;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(to right, #fff, #fff 50%, darkslategrey 50%);
+  background-size: 200% 100%;
+  background-position: 100%;
+  transition: all 0.3s cubic-bezier(0, 0, 0.23, 1);
+  &:hover {
+    transform: scale(1.5);
+    background-position: 0%;
+  }
+}
 .page {
   display: flex;
   justify-content: center;
@@ -84,7 +106,7 @@ h1 {
   width: 500px;
   height: 500px;
   display: flex;
-  flex-wrap: wrap; 
+  flex-wrap: wrap;
   .image-box {
     position: relative;
     height: 250px;
@@ -143,14 +165,6 @@ h1 {
   @media screen and (max-width: 767px) {
     width: 250px;
     height: 900px;
-    .image-box {
-      .img-portfolio {
-        // &[class*="img-2-"] {
-          // opacity: 1;
-          // clip-path: polygon(0% 0%, 100% 0%, 50% 50%, 0% 100%);
-        // }
-      }
-    }
   }
 }
 </style>
