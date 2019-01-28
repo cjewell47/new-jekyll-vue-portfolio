@@ -90,7 +90,6 @@ h1 {
   background-position: 100%;
   transition: all 0.3s cubic-bezier(0, 0, 0.23, 1);
   &:hover {
-    transform: scale(1.5);
     background-position: 0%;
   }
 }
