@@ -77,7 +77,7 @@ h1 {
         opacity: 0;
         color: #fff;
         background: #000;
-        clip-path: polygon(0 0, 100% 0, 100% 25%, 0 77%);
+        clip-path: polygon(0 0, 100% 0, 101% 25%, 0 77%);
         transition: opacity 0.4s ease;
       }
     }

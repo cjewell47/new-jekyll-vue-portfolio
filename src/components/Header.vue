@@ -175,6 +175,7 @@ a {
       position: relative;
       height: 100px;
       width: 100px;
+      font-size: 14px;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -208,7 +209,6 @@ a {
       p {
         transform: rotate(90deg);
         color: #fff;
-        font-style: italic;
         text-align: center;
         z-index: 100;
         letter-spacing: 1px;

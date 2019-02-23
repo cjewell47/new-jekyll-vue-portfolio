@@ -25,8 +25,7 @@ body {
   width: 100%;
   height: 100%;
   margin: 0;
-  font-family: "futura", sans-serif;
-  font-style: italic;
+  font-family: "B612", sans-serif;
   font-weight: 300;
   background: #f7797d;
   background: -webkit-linear-gradient(to right, #f7797d, #fbd786, #c6ffdd);
@@ -35,6 +34,9 @@ body {
   -webkit-animation: Gradient 10s ease infinite;
   -moz-animation: Gradient 10s ease infinite;
   animation: Gradient 10s ease infinite;
+  h1 {
+    font-weight: 400;
+  }
   .page {
     width: inherit;
     max-width: 900px;
