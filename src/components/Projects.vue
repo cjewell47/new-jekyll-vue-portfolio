@@ -10,9 +10,27 @@
     </p>
     <div class="projects-container">
       <transition name="fade">
-      <about-project v-if="showAbout" @close="showAbout = false" v-bind:project="aboutProject">
-
-      </about-project>
+        <about-project v-if="showAbout" @close="() => closeAbout()" v-bind:project="aboutProject">
+          <template v-if="aboutProject.bl" slot="body">
+            <h1>Blend Life</h1>
+          </template>
+          <template v-else-if="aboutProject.ffp" slot="body">
+            <div class="about-text">
+              <h1>Financial Fitness Plan</h1>
+              <p>This was a project built for Experian. It is a tool designed to recommend which financial products might be best for you, based on your current financial situation and your financial goals.</p>
+              <p>I built this using vue.js, on top of a page on Experian's CMS. It is styled using a slimmed down version of Experian's scss, with some styling also done within the vue components.</p>
+            </div>
+          </template>
+          <template v-else-if="aboutProject.pp" slot="body">
+            <h1>Paws &amp; Play</h1>
+          </template>
+          <template v-else-if="aboutProject.sn" slot="body">
+            <h1>Snake</h1>
+          </template>
+          <template v-else-if="aboutProject.br" slot="body">
+            <h1>Beer Rater</h1>
+          </template>
+        </about-project>
       </transition>
       <div class="image-box">
         <img class="img-portfolio img-1" src="img/BlendLifeBW-min.png">
@@ -20,10 +38,7 @@
         <div class="project-link">
           <p>
             <a href="https://intense-dusk-18560.herokuapp.com/" target="_blank">Visit</a> |
-            <a
-              href="https://github.com/cjewell47/blend-life-client/blob/master/README.md"
-              target="_blank"
-            >Read more</a>
+            <span @click="() => openAbout('bl')">Read more</span>
           </p>
         </div>
       </div>
@@ -32,8 +47,11 @@
         <img class="img-portfolio img-2-1" src="img/ffp.png">
         <div class="project-link">
           <p>
-            <a href="https://www.experian.co.uk/consumer/financial-fitness-plan/" target="_blank">Visit</a> |
-            <span @click="showAbout = true, aboutProject = ffp">Read more</span>
+            <a
+              href="https://www.experian.co.uk/consumer/financial-fitness-plan/"
+              target="_blank"
+            >Visit</a> |
+            <span @click="() => openAbout('ffp')">Read more</span>
           </p>
         </div>
       </div>
@@ -43,10 +61,7 @@
         <div class="project-link">
           <p>
             <a href="https://dogwalkingapp.herokuapp.com/" target="_blank">Visit</a> |
-            <a
-              href="https://github.com/cjewell47/paws-and-play/blob/master/README.md"
-              target="_blank"
-            >Read more</a>
+            <span @click="() => openAbout('pp')">Read more</span>
           </p>
         </div>
       </div>
@@ -56,11 +71,7 @@
         <div class="project-link">
           <p>
             <a href="https://stormy-forest-65305.herokuapp.com/" target="_blank">Visit</a> |
-            <a
-              href="https://github.com/cjewell47/snake/blob/master/README.md"
-              class="btn btn-dark read"
-              target="_blank"
-            >Read more</a>
+            <span @click="() => openAbout('sn')">Read more</span>
           </p>
         </div>
       </div>
@@ -70,11 +81,7 @@
         <div class="project-link">
           <p>
             <a href="https://evening-refuge-83030.herokuapp.com/" target="_blank">Visit</a> |
-            <a
-              href="https://github.com/cjewell47/beer-rater/blob/master/README.md"
-              class="btn btn-dark read"
-              target="_blank"
-            >Read more</a>
+            <span @click="() => openAbout('br')">Read more</span>
           </p>
         </div>
       </div>
@@ -89,10 +96,31 @@ export default {
   components: {
     "about-project": aboutProject
   },
-  data () {
+  data() {
     return {
-      aboutProject: null,
+      aboutProject: {
+        bl: false,
+        ffp: false,
+        pp: false,
+        sn: false,
+        br: false
+      },
       showAbout: false
+    };
+  },
+  methods: {
+    closeAbout: function() {
+      (this.showAbout = false),
+        Object.keys(this.aboutProject).forEach(
+          v => (this.aboutProject[v] = false)
+        );
+    },
+    openAbout: function(project) {
+      Object.keys(this.aboutProject).forEach(
+        v => (this.aboutProject[v] = false)
+      );
+      this.aboutProject[project] = true;
+      this.showAbout = true;
     }
   }
 };
@@ -110,7 +138,12 @@ h1 {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-image: linear-gradient(to right, #fff, #fff 50%, darkslategrey 50%);
+  background-image: linear-gradient(
+    to right,
+    #fff,
+    #fff 50%,
+    darkslategrey 50%
+  );
   background-size: 200% 100%;
   background-position: 100%;
   transition: all 0.3s cubic-bezier(0, 0, 0.23, 1);
@@ -176,7 +209,8 @@ h1 {
         font-weight: 300;
         font-size: 18px;
       }
-      a, span {
+      a,
+      span {
         color: #fff;
         text-decoration: none;
         letter-spacing: 1px;
@@ -196,8 +230,14 @@ h1 {
     height: 900px;
   }
 }
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .7s;
+
+.about-text {
+  padding: 0 30px 40px 30px;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.7s;
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
