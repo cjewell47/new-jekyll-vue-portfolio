@@ -25,7 +25,7 @@ body {
   width: 100%;
   height: 100%;
   margin: 0;
-  font-family: "B612", sans-serif;
+  font-family: 'Titillium Web', sans-serif;
   font-weight: 300;
   background: #f7797d;
   background: -webkit-linear-gradient(to right, #f7797d, #fbd786, #c6ffdd);

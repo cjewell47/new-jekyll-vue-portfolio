@@ -9,6 +9,11 @@
       >Github</a>
     </p>
     <div class="projects-container">
+      <transition name="fade">
+      <about-project v-if="showAbout" @close="showAbout = false" v-bind:project="aboutProject">
+
+      </about-project>
+      </transition>
       <div class="image-box">
         <img class="img-portfolio img-1" src="img/BlendLifeBW-min.png">
         <img class="img-portfolio img-2-1" src="img/BlendLife-min.png">
@@ -19,6 +24,16 @@
               href="https://github.com/cjewell47/blend-life-client/blob/master/README.md"
               target="_blank"
             >Read more</a>
+          </p>
+        </div>
+      </div>
+      <div class="image-box">
+        <img class="img-portfolio img-1" src="img/ffpbw.png">
+        <img class="img-portfolio img-2-1" src="img/ffp.png">
+        <div class="project-link">
+          <p>
+            <a href="https://www.experian.co.uk/consumer/financial-fitness-plan/" target="_blank">Visit</a> |
+            <span @click="showAbout = true, aboutProject = ffp">Read more</span>
           </p>
         </div>
       </div>
@@ -68,8 +83,18 @@
 </template>
 
 <script>
+import aboutProject from "./AboutProject.vue";
 export default {
-  name: "Projects"
+  name: "Projects",
+  components: {
+    "about-project": aboutProject
+  },
+  data () {
+    return {
+      aboutProject: null,
+      showAbout: false
+    }
+  }
 };
 </script>
 
@@ -103,9 +128,10 @@ h1 {
 .projects-container {
   margin: 20px auto;
   width: 500px;
-  height: 500px;
+  height: auto;
   display: flex;
   flex-wrap: wrap;
+  position: relative;
   .image-box {
     position: relative;
     height: 250px;
@@ -139,7 +165,7 @@ h1 {
       color: #fff;
       position: absolute;
       text-align: center;
-      z-index: 99;
+      z-index: 2;
       top: 235px;
       opacity: 0;
       transition: all 0.5s ease-in-out;
@@ -147,10 +173,14 @@ h1 {
       -moz-transition: all 0.5s ease-in-out;
       p {
         margin-top: 11px;
+        font-weight: 300;
+        font-size: 18px;
       }
-      a {
+      a, span {
         color: #fff;
         text-decoration: none;
+        letter-spacing: 1px;
+        cursor: pointer;
         &:hover {
           text-decoration: underline;
         }
@@ -165,5 +195,11 @@ h1 {
     width: 250px;
     height: 900px;
   }
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .7s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>
