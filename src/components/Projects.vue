@@ -10,11 +10,17 @@
     </p>
     <div class="projects-container">
       <transition name="fade">
-        <about-project v-if="showAbout" @close="() => closeAbout()" v-bind:project="aboutProject">
+        <about-project v-if="showAbout" v-bind:project="aboutProject">
           <template v-if="aboutProject.bl" slot="body">
-            <h1>Blend Life</h1>
+            <placeholder></placeholder>
+            <div class="about-text">
+              <h1>Blend Life</h1>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam dicta harum eum iure ducimus tenetur voluptatum, quod voluptatem numquam minus non, qui fuga suscipit necessitatibus possimus cumque nobis temporibus fugiat?</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit aliquid enim aperiam numquam eaque cum earum ipsa consequatur laboriosam amet, nobis eum tempore, placeat reiciendis, doloremque velit et quasi iure.</p>
+            </div>
           </template>
           <template v-else-if="aboutProject.ffp" slot="body">
+            <placeholder></placeholder>
             <div class="about-text">
               <h1>Financial Fitness Plan</h1>
               <p>This was a project built for Experian. It is a tool designed to recommend which financial products might be best for you, based on your current financial situation and your financial goals.</p>
@@ -22,66 +28,100 @@
             </div>
           </template>
           <template v-else-if="aboutProject.pp" slot="body">
-            <h1>Paws &amp; Play</h1>
+            <div class="about-text">
+              <h1>Paws &amp; Play</h1>
+            </div>
+            <placeholder></placeholder>
+            <div class="about-text">
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam dicta harum eum iure ducimus tenetur voluptatum, quod voluptatem numquam minus non, qui fuga suscipit necessitatibus possimus cumque nobis temporibus fugiat?</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit aliquid enim aperiam numquam eaque cum earum ipsa consequatur laboriosam amet, nobis eum tempore, placeat reiciendis, doloremque velit et quasi iure.</p>
+            </div>
           </template>
           <template v-else-if="aboutProject.sn" slot="body">
-            <h1>Snake</h1>
+            <div class="about-text">
+              <h1>Snake</h1>
+            </div>
+            <placeholder></placeholder>
+            <div class="about-text">
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam dicta harum eum iure ducimus tenetur voluptatum, quod voluptatem numquam minus non, qui fuga suscipit necessitatibus possimus cumque nobis temporibus fugiat?</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit aliquid enim aperiam numquam eaque cum earum ipsa consequatur laboriosam amet, nobis eum tempore, placeat reiciendis, doloremque velit et quasi iure.</p>
+            </div>
           </template>
           <template v-else-if="aboutProject.br" slot="body">
             <h1>Beer Rater</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam dicta harum eum iure ducimus tenetur voluptatum, quod voluptatem numquam minus non, qui fuga suscipit necessitatibus possimus cumque nobis temporibus fugiat?</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit aliquid enim aperiam numquam eaque cum earum ipsa consequatur laboriosam amet, nobis eum tempore, placeat reiciendis, doloremque velit et quasi iure.</p>
           </template>
         </about-project>
       </transition>
-      <div class="image-box">
+      <div class="image-box" v-bind:class="{'highlighted': aboutProject.bl}">
         <img class="img-portfolio img-1" src="img/BlendLifeBW-min.png">
         <img class="img-portfolio img-2-1" src="img/BlendLife-min.png">
         <div class="project-link">
           <p>
-            <a href="https://intense-dusk-18560.herokuapp.com/" target="_blank">Visit</a> |
-            <span @click="() => openAbout('bl')">Read more</span>
+            <a 
+              v-if="!aboutProject.bl" 
+              href="https://intense-dusk-18560.herokuapp.com/" 
+              target="_blank">Visit</a> <span v-if="!aboutProject.bl">|</span>
+            <span v-if="!aboutProject.bl" @click="() => openAbout('bl')">Read more</span>
+            <span v-else-if="aboutProject.bl" @click="() => closeAbout()">Close</span>
           </p>
         </div>
       </div>
-      <div class="image-box">
+      <div class="image-box" v-bind:class="{'highlighted': aboutProject.ffp}">
         <img class="img-portfolio img-1" src="img/ffpbw.png">
         <img class="img-portfolio img-2-1" src="img/ffp.png">
         <div class="project-link">
           <p>
             <a
+              v-if="!aboutProject.ffp"
               href="https://www.experian.co.uk/consumer/financial-fitness-plan/"
               target="_blank"
-            >Visit</a> |
-            <span @click="() => openAbout('ffp')">Read more</span>
+            >Visit</a> <span v-if="!aboutProject.ffp">|</span>
+            <span v-if="!aboutProject.ffp" @click="() => openAbout('ffp')">Read more</span>
+            <span v-else-if="aboutProject.ffp" @click="() => closeAbout()">Close</span>
           </p>
         </div>
       </div>
-      <div class="image-box">
+      <div class="image-box" v-bind:class="{'highlighted': aboutProject.pp}">
         <img class="img-portfolio img-1" src="img/PawsAndPlayBW-min.png">
         <img class="img-portfolio img-2-2" src="img/PawsAndPlay-min.png">
         <div class="project-link">
           <p>
-            <a href="https://dogwalkingapp.herokuapp.com/" target="_blank">Visit</a> |
-            <span @click="() => openAbout('pp')">Read more</span>
+            <a 
+              v-if="!aboutProject.pp" 
+              href="https://dogwalkingapp.herokuapp.com/" 
+              target="_blank">Visit</a> <span v-if="!aboutProject.pp">|</span>
+            <span v-if="!aboutProject.pp" @click="() => openAbout('pp')">Read more</span>
+            <span v-else-if="aboutProject.pp" @click="() => closeAbout()">Close</span>
           </p>
         </div>
       </div>
-      <div class="image-box">
+      <div class="image-box" v-bind:class="{'highlighted': aboutProject.sn}">
         <img class="img-portfolio img-1" src="img/SnakeBW-min.png">
         <img class="img-portfolio img-2-3" src="img/Snake-min.png">
         <div class="project-link">
           <p>
-            <a href="https://stormy-forest-65305.herokuapp.com/" target="_blank">Visit</a> |
-            <span @click="() => openAbout('sn')">Read more</span>
+            <a
+              v-if="!aboutProject.sn" 
+              href="https://stormy-forest-65305.herokuapp.com/" 
+              target="_blank">Visit</a> <span v-if="!aboutProject.sn">|</span>
+            <span v-if="!aboutProject.sn" @click="() => openAbout('sn')">Read more</span>
+            <span v-else-if="aboutProject.sn" @click="() => closeAbout()">Close</span>
           </p>
         </div>
       </div>
-      <div class="image-box">
+      <div class="image-box" v-bind:class="{'highlighted': aboutProject.br}">
         <img class="img-portfolio img-1" src="img/BeerRaterBW-min.png">
         <img class="img-portfolio img-2-4" src="img/BeerRater-min.png">
         <div class="project-link">
           <p>
-            <a href="https://evening-refuge-83030.herokuapp.com/" target="_blank">Visit</a> |
-            <span @click="() => openAbout('br')">Read more</span>
+            <a 
+              v-if="!aboutProject.br"
+              href="https://evening-refuge-83030.herokuapp.com/" 
+              target="_blank">Visit</a> <span v-if="!aboutProject.br">|</span>
+            <span v-if="!aboutProject.br" @click="() => openAbout('br')">Read more</span>
+            <span v-else-if="aboutProject.br" @click="() => closeAbout()">Close</span>
           </p>
         </div>
       </div>
@@ -193,7 +233,6 @@ h1 {
     }
     .project-link {
       width: 200px;
-      height: 45px;
       background-color: #000;
       color: #fff;
       position: absolute;
@@ -205,9 +244,9 @@ h1 {
       -webkit-transition: all 0.5s ease-in-out;
       -moz-transition: all 0.5s ease-in-out;
       p {
-        margin-top: 11px;
+        margin-top: 12px auto;
         font-weight: 300;
-        font-size: 18px;
+        font-size: 16px;
       }
       a,
       span {
@@ -224,6 +263,9 @@ h1 {
         top: 150px;
       }
     }
+    &.highlighted {
+      z-index: 4;
+    }
   }
   @media screen and (max-width: 767px) {
     width: 250px;
@@ -233,6 +275,11 @@ h1 {
 
 .about-text {
   padding: 0 30px 40px 30px;
+  height: 250px;
+  box-sizing: border-box;
+  h1 {
+    margin-top: 0;
+  }
 }
 
 .fade-enter-active,

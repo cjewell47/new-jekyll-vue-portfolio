@@ -22,6 +22,7 @@ export default {
 
 <style lang="scss">
 body {
+  -webkit-font-smooting: antialiased;
   width: 100%;
   height: 100%;
   margin: 0;

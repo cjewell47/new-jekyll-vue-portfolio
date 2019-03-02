@@ -1,7 +1,8 @@
 <template>
-  <div id="about-project" v-bind:class="{'second-row': project.pp || project.sn, 'third-row': project.br }">
-    <button @click="$emit('close')" class="close-icon"></button>
-    <slot name="body"></slot>    
+  <div id="about-project" v-bind:class="{'first-row': project.bl || project.ffp, 'second-row': project.pp || project.sn, 'third-row': project.br, 'left-col': project.bl || project.pp || project.br, 'right-col': project.ffp || project.sn }">
+    <!-- <button @click="$emit('close')" class="close-icon"></button> -->
+    <slot name="body">
+    </slot>    
   </div>
 </template>
 
@@ -21,19 +22,39 @@ export default {
 $gray: darkslategrey;
 
 #about-project {
+  box-sizing: border-box;
   position: absolute;
   width: 100%;
-  height: auto;
+  height: 100%;
   z-index: 3;
   background: #fff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: block;
+  placeholder  {
+    height: 250px;
+    width: 250px;
+    position: relative;
+    background-color: blue;
+  }
+  &.right-col {
+    placeholder {
+      float: right;
+      margin-left: 15px;
+    }
+  }
+  &.left-col {
+    placeholder {
+      float: left;
+      margin-right: 15px;
+    }
+  }
+  &.first-row {
+    // padding-top: 250px;
+  }
   &.second-row {
-      margin-top: 250px;
+      // margin-top: 250px;
   }
   &.third-row {
-      margin-top: 500px;
+      // margin-top: 500px;
   }
 }
 
