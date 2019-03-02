@@ -15,14 +15,39 @@
             <div class="placeholder"></div>
             <div class="about-text">
               <h1>Blend Life</h1>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam dicta harum eum iure ducimus tenetur voluptatum, quod voluptatem numquam minus non, qui fuga suscipit necessitatibus possimus cumque nobis temporibus fugiat?</p>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit aliquid enim aperiam numquam eaque cum earum ipsa consequatur laboriosam amet, nobis eum tempore, placeat reiciendis, doloremque velit et quasi iure.</p>
+              <p class="back-link" @click="() => closeAbout()">
+                <span>Back</span>
+              </p>
+              <br>
+              <a href="https://intense-dusk-18560.herokuapp.com/" target="_blank">
+                <span>See it here</span>
+              </a>
+              <a href="https://github.com/cjewell47/blend-life-client" target="_blank">
+                <span>Visit the client side repo</span>
+              </a>
+              <a href="https://github.com/cjewell47/blend-life-api" target="_blank">
+                <span>Visit the API repo</span>
+              </a>
+            </div>
+            <div class="about-text">
+              <p>This was a personal project I built, while at General Assembly. It is a fully authenticated app for submitting and sharing smoothie recipes, built with an AngularJS front end, a Ruby on Rails back end, and hosted on Heroku.</p>
+              <p>The aims for this project were to:</p>
+              <ul>
+                <li>Connect your Rails back-end to an SQL database and interact with it</li>
+                <li>Create at least two models in the SQL database, one being a user model</li>
+                <li>Have user authentication where the user's details are stored in the User model in the database</li>
+                <li>Create API routes with CRUD functionality using Rails that are to be consumed by the AngularJS front-end</li>
+              </ul>
             </div>
           </template>
           <template v-else-if="aboutProject.ffp" slot="body">
             <div class="placeholder"></div>
             <div class="about-text">
               <h1>Financial Fitness Plan</h1>
+              <p class="back-link" @click="() => closeAbout()">
+                <span>Back</span>
+              </p>
+              <br>
               <a href="https://www.experian.co.uk/consumer/financial-fitness-plan/" target="_blank">
                 <span>See it here</span>
               </a>
@@ -31,14 +56,29 @@
             </div>
           </template>
           <template v-else-if="aboutProject.pp" slot="body">
-            <div class="about-text">
+            <div class="about-text half">
               <h1>Paws &amp; Play</h1>
+              <p class="back-link" @click="() => closeAbout()">
+                <span>Back</span>
+              </p>
+              <br>
+              <a href="https://dogwalkingapp.herokuapp.com/" target="_blank">
+                <span>See it here</span>
+              </a>
+              <br>
+              <a href="https://github.com/cjewell47/paws-and-play" target="_blank">
+                <span>Visit the repo</span>
+              </a>
+            </div>
+            <div class="about-text half mt-30">
+              <p>This was another personal project I built while at General Assembly. It is an application designed to match dog walkers with dog owners who need them. It is a MEAN stack application (MongoDB, Express.js, AngularJS, node.js), and was styled using Bootstrap.</p>
+              <p>The aims for this project were:</p>
+              <ul>
+                <li>Use Mongo &amp; Express to build an API and a front-end that consumes it</li>
+                <li>Create an API with CRUD functionality using at least 2 related models, one of which should be a user</li>
+              </ul>
             </div>
             <div class="placeholder"></div>
-            <div class="about-text">
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam dicta harum eum iure ducimus tenetur voluptatum, quod voluptatem numquam minus non, qui fuga suscipit necessitatibus possimus cumque nobis temporibus fugiat?</p>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit aliquid enim aperiam numquam eaque cum earum ipsa consequatur laboriosam amet, nobis eum tempore, placeat reiciendis, doloremque velit et quasi iure.</p>
-            </div>
           </template>
           <template v-else-if="aboutProject.sn" slot="body">
             <div class="about-text">
@@ -64,14 +104,8 @@
         <img class="img-portfolio img-2-1" src="img/BlendLife-min.png">
         <div class="project-link">
           <p>
-            <a
-              v-if="!aboutProject.bl"
-              href="https://intense-dusk-18560.herokuapp.com/"
-              target="_blank"
-            >Visit</a>
-            <span v-if="!aboutProject.bl">|</span>
-            <span v-if="!aboutProject.bl" @click="() => openAbout('bl')">Read more</span>
-            <span v-else-if="aboutProject.bl" @click="() => closeAbout()">Close</span>
+            <a href="https://intense-dusk-18560.herokuapp.com/" target="_blank">Visit</a> |
+            <span @click="() => openAbout('bl')">Read more</span>
           </p>
         </div>
       </div>
@@ -81,13 +115,10 @@
         <div class="project-link">
           <p>
             <a
-              v-if="!aboutProject.ffp"
               href="https://www.experian.co.uk/consumer/financial-fitness-plan/"
               target="_blank"
-            >Visit</a>
-            <span v-if="!aboutProject.ffp">|</span>
-            <span v-if="!aboutProject.ffp" @click="() => openAbout('ffp')">Read more</span>
-            <span v-else-if="aboutProject.ffp" @click="() => closeAbout()">Close</span>
+            >Visit</a> |
+            <span @click="() => openAbout('ffp')">Read more</span>
           </p>
         </div>
       </div>
@@ -96,14 +127,8 @@
         <img class="img-portfolio img-2-2" src="img/PawsAndPlay-min.png">
         <div class="project-link">
           <p>
-            <a
-              v-if="!aboutProject.pp"
-              href="https://dogwalkingapp.herokuapp.com/"
-              target="_blank"
-            >Visit</a>
-            <span v-if="!aboutProject.pp">|</span>
-            <span v-if="!aboutProject.pp" @click="() => openAbout('pp')">Read more</span>
-            <span v-else-if="aboutProject.pp" @click="() => closeAbout()">Close</span>
+            <a href="https://dogwalkingapp.herokuapp.com/" target="_blank">Visit</a> |
+            <span @click="() => openAbout('pp')">Read more</span>
           </p>
         </div>
       </div>
@@ -112,14 +137,8 @@
         <img class="img-portfolio img-2-3" src="img/Snake-min.png">
         <div class="project-link">
           <p>
-            <a
-              v-if="!aboutProject.sn"
-              href="https://stormy-forest-65305.herokuapp.com/"
-              target="_blank"
-            >Visit</a>
-            <span v-if="!aboutProject.sn">|</span>
-            <span v-if="!aboutProject.sn" @click="() => openAbout('sn')">Read more</span>
-            <span v-else-if="aboutProject.sn" @click="() => closeAbout()">Close</span>
+            <a href="https://stormy-forest-65305.herokuapp.com/" target="_blank">Visit</a> |
+            <span @click="() => openAbout('sn')">Read more</span>
           </p>
         </div>
       </div>
@@ -128,14 +147,8 @@
         <img class="img-portfolio img-2-4" src="img/BeerRater-min.png">
         <div class="project-link">
           <p>
-            <a
-              v-if="!aboutProject.br"
-              href="https://evening-refuge-83030.herokuapp.com/"
-              target="_blank"
-            >Visit</a>
-            <span v-if="!aboutProject.br">|</span>
-            <span v-if="!aboutProject.br" @click="() => openAbout('br')">Read more</span>
-            <span v-else-if="aboutProject.br" @click="() => closeAbout()">Close</span>
+            <a href="https://evening-refuge-83030.herokuapp.com/" target="_blank">Visit</a> |
+            <span @click="() => openAbout('br')">Read more</span>
           </p>
         </div>
       </div>
@@ -281,6 +294,10 @@ h1 {
       z-index: 4;
       .img-portfolio[class*="img-2-"] {
         opacity: 1;
+        &:hover ~ .project-link {
+          opacity: 0;
+          top: 235px;
+        }
       }
     }
   }
@@ -298,12 +315,15 @@ h1 {
     padding-top: 20px;
     margin-top: 0;
   }
-  a {
+  a,
+  .back-link {
     text-decoration: none;
     position: relative;
     overflow: hidden;
+    margin: 0;
     display: inline-flex;
     padding: 8px;
+    cursor: pointer;
     span {
       color: $gray;
       z-index: 1;
@@ -335,13 +355,21 @@ h1 {
       }
     }
   }
+  &.half {
+    width: 250px;
+    float: left;
+  }
+  &.mt-30 {
+    margin-top: 30px;
+  }
 }
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.7s;
+  transition: opacity 0.4s;
 }
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+.fade-enter,
+.fade-leave-to {
   opacity: 0;
 }
 </style>
