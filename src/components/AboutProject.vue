@@ -1,6 +1,5 @@
 <template>
-  <div id="about-project" v-bind:class="{'first-row': project.bl || project.ffp, 'second-row': project.pp || project.sn, 'third-row': project.br, 'left-col': project.bl || project.pp || project.br, 'right-col': project.ffp || project.sn }">
-    <!-- <button @click="$emit('close')" class="close-icon"></button> -->
+  <div id="about-project" v-bind:class="{'left-col': project.bl || project.pp || project.br, 'right-col': project.ffp || project.sn }">
     <slot name="body">
     </slot>    
   </div>
@@ -29,32 +28,22 @@ $gray: darkslategrey;
   z-index: 3;
   background: #fff;
   display: block;
-  placeholder  {
+  .placeholder  {
     height: 250px;
     width: 250px;
     position: relative;
-    background-color: blue;
   }
   &.right-col {
-    placeholder {
+    .placeholder {
       float: right;
       margin-left: 15px;
     }
   }
   &.left-col {
-    placeholder {
+    .placeholder {
       float: left;
       margin-right: 15px;
     }
-  }
-  &.first-row {
-    // padding-top: 250px;
-  }
-  &.second-row {
-      // margin-top: 250px;
-  }
-  &.third-row {
-      // margin-top: 500px;
   }
 }
 

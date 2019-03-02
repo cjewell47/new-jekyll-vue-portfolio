@@ -12,7 +12,7 @@
       <transition name="fade">
         <about-project v-if="showAbout" v-bind:project="aboutProject">
           <template v-if="aboutProject.bl" slot="body">
-            <placeholder></placeholder>
+            <div class="placeholder"></div>
             <div class="about-text">
               <h1>Blend Life</h1>
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam dicta harum eum iure ducimus tenetur voluptatum, quod voluptatem numquam minus non, qui fuga suscipit necessitatibus possimus cumque nobis temporibus fugiat?</p>
@@ -20,9 +20,12 @@
             </div>
           </template>
           <template v-else-if="aboutProject.ffp" slot="body">
-            <placeholder></placeholder>
+            <div class="placeholder"></div>
             <div class="about-text">
               <h1>Financial Fitness Plan</h1>
+              <a href="https://www.experian.co.uk/consumer/financial-fitness-plan/" target="_blank">
+                <span>See it here</span>
+              </a>
               <p>This was a project built for Experian. It is a tool designed to recommend which financial products might be best for you, based on your current financial situation and your financial goals.</p>
               <p>I built this using vue.js, on top of a page on Experian's CMS. It is styled using a slimmed down version of Experian's scss, with some styling also done within the vue components.</p>
             </div>
@@ -31,7 +34,7 @@
             <div class="about-text">
               <h1>Paws &amp; Play</h1>
             </div>
-            <placeholder></placeholder>
+            <div class="placeholder"></div>
             <div class="about-text">
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam dicta harum eum iure ducimus tenetur voluptatum, quod voluptatem numquam minus non, qui fuga suscipit necessitatibus possimus cumque nobis temporibus fugiat?</p>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit aliquid enim aperiam numquam eaque cum earum ipsa consequatur laboriosam amet, nobis eum tempore, placeat reiciendis, doloremque velit et quasi iure.</p>
@@ -41,16 +44,18 @@
             <div class="about-text">
               <h1>Snake</h1>
             </div>
-            <placeholder></placeholder>
+            <div class="placeholder"></div>
             <div class="about-text">
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam dicta harum eum iure ducimus tenetur voluptatum, quod voluptatem numquam minus non, qui fuga suscipit necessitatibus possimus cumque nobis temporibus fugiat?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit aliquid enim aperiam numquam eaque cum earum ipsa consequatur laboriosam amet, nobis eum tempore, placeat reiciendis, doloremque velit et quasi iure.</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit aliquid enim aperiam numquam eaque cum earum ipsa consequatur laboriosam amet, nobis eum tempore, placeat reiciendis, doloremque velit et quasi iure.</p>
             </div>
           </template>
           <template v-else-if="aboutProject.br" slot="body">
-            <h1>Beer Rater</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam dicta harum eum iure ducimus tenetur voluptatum, quod voluptatem numquam minus non, qui fuga suscipit necessitatibus possimus cumque nobis temporibus fugiat?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit aliquid enim aperiam numquam eaque cum earum ipsa consequatur laboriosam amet, nobis eum tempore, placeat reiciendis, doloremque velit et quasi iure.</p>
+            <div class="about-text">
+              <h1>Beer Rater</h1>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam dicta harum eum iure ducimus tenetur voluptatum, quod voluptatem numquam minus non, qui fuga suscipit necessitatibus possimus cumque nobis temporibus fugiat?</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit aliquid enim aperiam numquam eaque cum earum ipsa consequatur laboriosam amet, nobis eum tempore, placeat reiciendis, doloremque velit et quasi iure.</p>
+            </div>
           </template>
         </about-project>
       </transition>
@@ -59,10 +64,12 @@
         <img class="img-portfolio img-2-1" src="img/BlendLife-min.png">
         <div class="project-link">
           <p>
-            <a 
-              v-if="!aboutProject.bl" 
-              href="https://intense-dusk-18560.herokuapp.com/" 
-              target="_blank">Visit</a> <span v-if="!aboutProject.bl">|</span>
+            <a
+              v-if="!aboutProject.bl"
+              href="https://intense-dusk-18560.herokuapp.com/"
+              target="_blank"
+            >Visit</a>
+            <span v-if="!aboutProject.bl">|</span>
             <span v-if="!aboutProject.bl" @click="() => openAbout('bl')">Read more</span>
             <span v-else-if="aboutProject.bl" @click="() => closeAbout()">Close</span>
           </p>
@@ -77,7 +84,8 @@
               v-if="!aboutProject.ffp"
               href="https://www.experian.co.uk/consumer/financial-fitness-plan/"
               target="_blank"
-            >Visit</a> <span v-if="!aboutProject.ffp">|</span>
+            >Visit</a>
+            <span v-if="!aboutProject.ffp">|</span>
             <span v-if="!aboutProject.ffp" @click="() => openAbout('ffp')">Read more</span>
             <span v-else-if="aboutProject.ffp" @click="() => closeAbout()">Close</span>
           </p>
@@ -88,10 +96,12 @@
         <img class="img-portfolio img-2-2" src="img/PawsAndPlay-min.png">
         <div class="project-link">
           <p>
-            <a 
-              v-if="!aboutProject.pp" 
-              href="https://dogwalkingapp.herokuapp.com/" 
-              target="_blank">Visit</a> <span v-if="!aboutProject.pp">|</span>
+            <a
+              v-if="!aboutProject.pp"
+              href="https://dogwalkingapp.herokuapp.com/"
+              target="_blank"
+            >Visit</a>
+            <span v-if="!aboutProject.pp">|</span>
             <span v-if="!aboutProject.pp" @click="() => openAbout('pp')">Read more</span>
             <span v-else-if="aboutProject.pp" @click="() => closeAbout()">Close</span>
           </p>
@@ -103,9 +113,11 @@
         <div class="project-link">
           <p>
             <a
-              v-if="!aboutProject.sn" 
-              href="https://stormy-forest-65305.herokuapp.com/" 
-              target="_blank">Visit</a> <span v-if="!aboutProject.sn">|</span>
+              v-if="!aboutProject.sn"
+              href="https://stormy-forest-65305.herokuapp.com/"
+              target="_blank"
+            >Visit</a>
+            <span v-if="!aboutProject.sn">|</span>
             <span v-if="!aboutProject.sn" @click="() => openAbout('sn')">Read more</span>
             <span v-else-if="aboutProject.sn" @click="() => closeAbout()">Close</span>
           </p>
@@ -116,10 +128,12 @@
         <img class="img-portfolio img-2-4" src="img/BeerRater-min.png">
         <div class="project-link">
           <p>
-            <a 
+            <a
               v-if="!aboutProject.br"
-              href="https://evening-refuge-83030.herokuapp.com/" 
-              target="_blank">Visit</a> <span v-if="!aboutProject.br">|</span>
+              href="https://evening-refuge-83030.herokuapp.com/"
+              target="_blank"
+            >Visit</a>
+            <span v-if="!aboutProject.br">|</span>
             <span v-if="!aboutProject.br" @click="() => openAbout('br')">Read more</span>
             <span v-else-if="aboutProject.br" @click="() => closeAbout()">Close</span>
           </p>
@@ -265,11 +279,14 @@ h1 {
     }
     &.highlighted {
       z-index: 4;
+      .img-portfolio[class*="img-2-"] {
+        opacity: 1;
+      }
     }
   }
   @media screen and (max-width: 767px) {
     width: 250px;
-    height: 900px;
+    height: 1250px;
   }
 }
 
@@ -278,7 +295,45 @@ h1 {
   height: 250px;
   box-sizing: border-box;
   h1 {
+    padding-top: 20px;
     margin-top: 0;
+  }
+  a {
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    padding: 8px;
+    span {
+      color: $gray;
+      z-index: 1;
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 300%;
+      height: 100%;
+      background-image: linear-gradient(
+        90deg,
+        lighten($gray, 5%) 33.33%,
+        transparent 66.66%
+      );
+      -webkit-transform: translateX(-66.66%);
+      transform: translateX(-66.66%);
+      z-index: 0;
+      transition: all 0.75s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    &:hover {
+      span {
+        color: #000;
+      }
+      &::before {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+      }
+    }
   }
 }
 
