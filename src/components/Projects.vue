@@ -81,13 +81,23 @@
             <div class="placeholder"></div>
           </template>
           <template v-else-if="aboutProject.sn" slot="body">
-            <div class="about-text">
+            <div class="about-text half">
               <h1>Snake</h1>
+              <p>Another personal project of mine from time at General Assembly. It's a version of the classic game Snake built using jQuery.</p>
+              <p>The snake is continually moving, the player directs the snake around the grid with the arrow keys. If the snake collides with the wall or with itself it dies. Food appears on grid at timed intervals, when the player directs the snake into the food the player gains 1 point and the snake grows one cell longer. There are three speeds or difficulties the player can select to play the game, fast, medium and slow.</p>
             </div>
-            <div class="placeholder"></div>
-            <div class="about-text">
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam dicta harum eum iure ducimus tenetur voluptatum, quod voluptatem numquam minus non, qui fuga suscipit necessitatibus possimus cumque nobis temporibus fugiat?</p>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit aliquid enim aperiam numquam eaque cum earum ipsa consequatur laboriosam amet, nobis eum tempore, placeat reiciendis, doloremque velit et quasi iure.</p>
+            <div class="about-text half mt-30">
+              <p class="back-link" @click="() => closeAbout()">
+                <span>Back</span>
+              </p>
+              <br>
+              <a href="https://stormy-forest-65305.herokuapp…" target="_blank">
+                <span>See it here</span>
+              </a>
+              <br>
+              <a href="https://github.com/cjewell47/snake" target="_blank">
+                <span>Visit the repo</span>
+              </a>
             </div>
           </template>
           <template v-else-if="aboutProject.br" slot="body">
