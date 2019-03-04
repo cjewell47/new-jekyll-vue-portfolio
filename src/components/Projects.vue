@@ -109,7 +109,19 @@
           </template>
         </about-project>
       </transition>
-      <div class="image-box" v-bind:class="{'highlighted': aboutProject.bl}">
+      <!-- <div v-for="(project, index) in projects" v-bind:id="project.code" v-bind:key="index" class="image-box">
+        <img class="img-portfolio img-1" v-bind:src="project.img1">
+        <img class="img-portfolio img-2-1" v-bind:src="project.img2">
+        <div class="project-link">
+          <p>
+            <a v-bind:href="project.link" target="_blank">Visit</a> |
+            <span @click="() => openAbout(project.code)">Read more</span>
+          </p>
+        </div>
+      </div> -->
+      <project-image v-for="(project, index) in projects" v-bind:project="project" v-bind:id="project.code" v-bind:key="index" @read-more="($event) => openAbout($event)"></project-image>
+
+      <!-- <div class="image-box" v-bind:class="{'highlighted': aboutProject.bl}">
         <img class="img-portfolio img-1" src="img/BlendLifeBW-min.png">
         <img class="img-portfolio img-2-1" src="img/BlendLife-min.png">
         <div class="project-link">
@@ -161,17 +173,21 @@
             <span @click="() => openAbout('br')">Read more</span>
           </p>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
 
 <script>
-import aboutProject from "./AboutProject.vue";
+import aboutProject from "./project-components/AboutProject.vue";
+import projectImage from "./project-components/ProjectImage.vue";
+import projects from "../projects.json"
+
 export default {
   name: "Projects",
   components: {
-    "about-project": aboutProject
+    "about-project": aboutProject,
+    "project-image": projectImage
   },
   data() {
     return {
@@ -182,7 +198,8 @@ export default {
         sn: false,
         br: false
       },
-      showAbout: false
+      showAbout: false,
+      projects: projects
     };
   },
   methods: {
@@ -242,75 +259,75 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   position: relative;
-  .image-box {
-    position: relative;
-    height: 250px;
-    width: 250px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    object-fit: cover;
-    .img-portfolio {
-      height: 250px;
-      position: absolute;
-      transition: opacity 0.5s ease-in-out;
-      -webkit-transition: opacity 0.5s ease-in-out;
-      -moz-transition: opacity 0.5s ease-in-out;
-      &[class*="img-2-"] {
-        opacity: 0;
-        &:hover ~ .project-link {
-          opacity: 1;
-          top: 150px;
-        }
-      }
-    }
-    &:hover > .img-portfolio[class*="img-2-"] {
-      opacity: 1;
-    }
-    .project-link {
-      width: 200px;
-      background-color: #000;
-      color: #fff;
-      position: absolute;
-      text-align: center;
-      z-index: 2;
-      top: 235px;
-      opacity: 0;
-      transition: all 0.5s ease-in-out;
-      -webkit-transition: all 0.5s ease-in-out;
-      -moz-transition: all 0.5s ease-in-out;
-      p {
-        margin-top: 12px auto;
-        font-weight: 300;
-        font-size: 16px;
-      }
-      a,
-      span {
-        color: #fff;
-        text-decoration: none;
-        letter-spacing: 1px;
-        cursor: pointer;
-        &:hover {
-          text-decoration: underline;
-        }
-      }
-      &:hover {
-        opacity: 1;
-        top: 150px;
-      }
-    }
-    &.highlighted {
-      z-index: 4;
-      .img-portfolio[class*="img-2-"] {
-        opacity: 1;
-        &:hover ~ .project-link {
-          opacity: 0;
-          top: 235px;
-        }
-      }
-    }
-  }
+  // .image-box {
+  //   position: relative;
+  //   height: 250px;
+  //   width: 250px;
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+  //   overflow: hidden;
+  //   object-fit: cover;
+  //   .img-portfolio {
+  //     height: 250px;
+  //     position: absolute;
+  //     transition: opacity 0.5s ease-in-out;
+  //     -webkit-transition: opacity 0.5s ease-in-out;
+  //     -moz-transition: opacity 0.5s ease-in-out;
+  //     &[class*="img-2-"] {
+  //       opacity: 0;
+  //       &:hover ~ .project-link {
+  //         opacity: 1;
+  //         top: 150px;
+  //       }
+  //     }
+  //   }
+  //   &:hover > .img-portfolio[class*="img-2-"] {
+  //     opacity: 1;
+  //   }
+  //   .project-link {
+  //     width: 200px;
+  //     background-color: #000;
+  //     color: #fff;
+  //     position: absolute;
+  //     text-align: center;
+  //     z-index: 2;
+  //     top: 235px;
+  //     opacity: 0;
+  //     transition: all 0.5s ease-in-out;
+  //     -webkit-transition: all 0.5s ease-in-out;
+  //     -moz-transition: all 0.5s ease-in-out;
+  //     p {
+  //       margin-top: 12px auto;
+  //       font-weight: 300;
+  //       font-size: 16px;
+  //     }
+  //     a,
+  //     span {
+  //       color: #fff;
+  //       text-decoration: none;
+  //       letter-spacing: 1px;
+  //       cursor: pointer;
+  //       &:hover {
+  //         text-decoration: underline;
+  //       }
+  //     }
+  //     &:hover {
+  //       opacity: 1;
+  //       top: 150px;
+  //     }
+  //   }
+  //   &.highlighted {
+  //     z-index: 4;
+  //     .img-portfolio[class*="img-2-"] {
+  //       opacity: 1;
+  //       &:hover ~ .project-link {
+  //         opacity: 0;
+  //         top: 235px;
+  //       }
+  //     }
+  //   }
+  // }
   @media screen and (max-width: 767px) {
     width: 250px;
     height: 1250px;
