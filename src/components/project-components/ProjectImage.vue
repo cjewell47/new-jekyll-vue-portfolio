@@ -1,5 +1,5 @@
 <template>
-  <div class="image-box" :class="{ 'highlighted': highlighted }">
+  <div :class="['project-' + project.code, { 'highlighted': highlighted }]">
     <img :src="project.img1">
     <img :src="project.img2">
     <div>
@@ -31,7 +31,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.image-box {
+[class^="project-"] {
   position: relative;
   height: 250px;
   width: 250px;

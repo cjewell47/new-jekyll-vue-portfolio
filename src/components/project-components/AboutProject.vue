@@ -1,5 +1,5 @@
 <template>
-  <div id="about-project" v-bind:class="{'left-col': project.bl || project.pp || project.br, 'right-col': project.ffp || project.sn }">
+  <div id="about-project" :class="{'left-col': project.bl || project.pp || project.br, 'right-col': project.ffp || project.sn }">
     <slot name="body">
     </slot>    
   </div>

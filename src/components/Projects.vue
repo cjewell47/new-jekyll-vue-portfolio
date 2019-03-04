@@ -3,10 +3,7 @@
     <h1>Projects</h1>
     <p class="under-h1">
       View all of my personal projects on
-      <a
-        data-text="Github"
-        href="https://github.com/cjewell47"
-      >Github</a>
+      <a href="https://github.com/cjewell47">Github</a>
     </p>
     <div class="projects-container">
       <transition name="fade">
@@ -113,7 +110,6 @@
         v-for="(project, index) in projects" 
         :project="project" 
         :highlighted="aboutProject[project.code]" 
-        :id="project.code" 
         :key="index + 1" 
         @read-more="($event) => openAbout($event)">
       </project-image>
