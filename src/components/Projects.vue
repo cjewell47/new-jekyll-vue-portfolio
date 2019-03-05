@@ -88,7 +88,7 @@
                 <span>Back</span>
               </p>
               <br>
-              <a href="https://stormy-forest-65305.herokuapp…" target="_blank">
+              <a href="https://stormy-forest-65305.herokuapp.com/" target="_blank">
                 <span>See it here</span>
               </a>
               <br>
@@ -100,19 +100,32 @@
           <template v-else-if="aboutProject.br" slot="body">
             <div class="about-text">
               <h1>Beer Rater</h1>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam dicta harum eum iure ducimus tenetur voluptatum, quod voluptatem numquam minus non, qui fuga suscipit necessitatibus possimus cumque nobis temporibus fugiat?</p>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit aliquid enim aperiam numquam eaque cum earum ipsa consequatur laboriosam amet, nobis eum tempore, placeat reiciendis, doloremque velit et quasi iure.</p>
+              <div class="text-left-wrap">
+                <p class="back-link" @click="() => closeAbout()">
+                  <span>Back</span>
+                </p>
+                <br>
+                <a href="https://evening-refuge-83030.herokuapp.com/" target="_blank">
+                  <span>See it here</span>
+                </a>
+                <br>
+                <a href="https://github.com/cjewell47/beer-rater" target="_blank">
+                  <span>Visit the repo</span>
+                </a>
+              </div>
+              <p>This was an early project I built while at General Assembly. It is a RESTful app for users to log in, upload, rate and discuss different beers. I used an open BrewDog API to populate it to begin with.</p>
+              <p>The app is authenticated and has 2 models, one representing the users and the other representing the beers, which comes with full CRUD functionality. It was built with MongoDB, Express.js, Node.js, and styled using Bootstrap CSS.</p>
             </div>
           </template>
         </about-project>
       </transition>
-      <project-image 
-        v-for="(project, index) in projects" 
-        :project="project" 
-        :highlighted="aboutProject[project.code]" 
-        :key="index + 1" 
-        @read-more="($event) => openAbout($event)">
-      </project-image>
+      <project-image
+        v-for="(project, index) in projects"
+        :project="project"
+        :highlighted="aboutProject[project.code]"
+        :key="index + 1"
+        @read-more="($event) => openAbout($event)"
+      ></project-image>
     </div>
   </div>
 </template>
@@ -120,7 +133,7 @@
 <script>
 import aboutProject from "./project-components/AboutProject.vue";
 import projectImage from "./project-components/ProjectImage.vue";
-import projects from "../projects.json"
+import projects from "../projects.json";
 
 export default {
   name: "Projects",
@@ -252,6 +265,10 @@ h1 {
       }
     }
   }
+  .text-left-wrap {
+      width: 40%;
+      float: left;
+    }
   &.half {
     width: 250px;
     float: left;
