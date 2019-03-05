@@ -4,7 +4,6 @@
     <img :src="project.img2">
     <div>
       <p>
-        <a :href="project.link" target="_blank">Visit</a> |
         <span @click="$emit('read-more', project.code)">Read more</span>
       </p>
     </div>
@@ -33,24 +32,25 @@ export default {
 <style lang="scss" scoped>
 [class^="project-"] {
   position: relative;
-  height: 250px;
-  width: 250px;
+  height: 170px;
+  width: 170px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   object-fit: cover;
   img {
-    height: 250px;
+    height: 170px;
     position: absolute;
     transition: opacity 0.5s ease-in-out;
     -webkit-transition: opacity 0.5s ease-in-out;
     -moz-transition: opacity 0.5s ease-in-out;
     &:nth-of-type(2) {
       opacity: 0;
-      &:hover ~ div {
+      &:hover ~ div, & ~ div:hover {
         opacity: 1;
-        top: 150px;
+        top: 70px;
+        left: 20px;
       }
     }
   }
@@ -58,19 +58,21 @@ export default {
     opacity: 1;
   }
   & > div {
-    width: 200px;
+    width: 120px;
     background-color: #000;
     color: #fff;
     position: absolute;
     text-align: center;
     z-index: 2;
-    top: 235px;
+    top: 120px;
     opacity: 0;
+    transform: rotate(45deg);
+    left: -27px;
     transition: all 0.5s ease-in-out;
     -webkit-transition: all 0.5s ease-in-out;
     -moz-transition: all 0.5s ease-in-out;
     p {
-      margin-top: 12px auto;
+      margin: 12px auto;
       font-weight: 300;
       font-size: 16px;
     }
@@ -84,10 +86,6 @@ export default {
         text-decoration: underline;
       }
     }
-    &:hover {
-      opacity: 1;
-      top: 150px;
-    }
   }
   &.highlighted {
     z-index: 4;
@@ -95,7 +93,7 @@ export default {
       opacity: 1;
       &:hover ~ div {
         opacity: 0;
-        top: 235px;
+        top: 190px;
       }
     }
   }

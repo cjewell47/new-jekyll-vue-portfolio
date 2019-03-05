@@ -119,13 +119,15 @@
           </template>
         </about-project>
       </transition>
-      <project-image
-        v-for="(project, index) in projects"
-        :project="project"
-        :highlighted="aboutProject[project.code]"
-        :key="index + 1"
-        @read-more="($event) => openAbout($event)"
-      ></project-image>
+      <div class="projects-image-container">
+        <project-image
+          v-for="(project, index) in repeatProjects"
+          :project="project"
+          :highlighted="aboutProject[project.code]"
+          :key="index + 1"
+          @read-more="($event) => openAbout($event)"
+        ></project-image>
+      </div>
     </div>
   </div>
 </template>
@@ -168,6 +170,17 @@ export default {
       this.aboutProject[project] = true;
       this.showAbout = true;
     }
+  },
+  computed: {
+    repeatProjects: function() {
+      let newProjects = [...projects],
+        i = 0;
+      while (i < 10) {
+        newProjects.push(...projects);
+        i++;
+      }
+      return newProjects;
+    }
   }
 };
 </script>
@@ -207,13 +220,25 @@ h1 {
 .projects-container {
   margin: 20px auto;
   width: 500px;
-  height: auto;
+  height: 800px;
   display: flex;
   flex-wrap: wrap;
   position: relative;
+  overflow: hidden;
   @media screen and (max-width: 767px) {
     width: 250px;
     height: 1250px;
+  }
+  .projects-image-container {
+    width: 1400px;
+    height: 1000px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    position: absolute;
+    top: -260px;
+    left: -260px;
+    transform: rotate(315deg);
   }
 }
 
@@ -266,9 +291,9 @@ h1 {
     }
   }
   .text-left-wrap {
-      width: 40%;
-      float: left;
-    }
+    width: 40%;
+    float: left;
+  }
   &.half {
     width: 250px;
     float: left;
