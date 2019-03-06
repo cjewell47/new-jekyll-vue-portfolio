@@ -59,28 +59,27 @@ export default {
   }
   & > div {
     width: 120px;
-    background-color: #000;
-    color: #fff;
+    background-color: rgba(255,255,255,0.9);
+    border: 1px solid #000;
+    color: #000;
     position: absolute;
     text-align: center;
     z-index: 2;
-    top: 120px;
+    top: 100px;
     opacity: 0;
     transform: rotate(45deg);
-    left: -27px;
+    left: -15px;
     transition: all 0.5s ease-in-out;
     -webkit-transition: all 0.5s ease-in-out;
     -moz-transition: all 0.5s ease-in-out;
     p {
       margin: 12px auto;
-      font-weight: 300;
+      font-weight: 400;
       font-size: 16px;
     }
     a,
     span {
-      color: #fff;
       text-decoration: none;
-      letter-spacing: 1px;
       cursor: pointer;
       &:hover {
         text-decoration: underline;
