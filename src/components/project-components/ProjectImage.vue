@@ -65,7 +65,7 @@ export default {
     position: absolute;
     text-align: center;
     z-index: 2;
-    top: 100px;
+    top: 105px;
     opacity: 0;
     transform: rotate(45deg);
     left: -15px;

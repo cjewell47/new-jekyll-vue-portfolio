@@ -9,6 +9,7 @@
       <transition name="fade">
         <about-project v-if="showAbout" v-bind:project="aboutProject">
           <template v-if="aboutProject.bl" slot="body">
+            <p>{{showingProjectInd}}</p>
             <div class="placeholder"></div>
             <div class="about-text">
               <h1>Blend Life</h1>
@@ -38,6 +39,7 @@
             </div>
           </template>
           <template v-else-if="aboutProject.ffp" slot="body">
+            <p>{{showingProjectInd}}</p>
             <div class="placeholder"></div>
             <div class="about-text">
               <h1>Financial Fitness Plan</h1>
@@ -53,6 +55,7 @@
             </div>
           </template>
           <template v-else-if="aboutProject.pp" slot="body">
+            <p>{{showingProjectInd}}</p>
             <div class="about-text half">
               <h1>Paws &amp; Play</h1>
               <p class="back-link" @click="() => closeAbout()">
@@ -78,6 +81,7 @@
             <div class="placeholder"></div>
           </template>
           <template v-else-if="aboutProject.sn" slot="body">
+            <p>{{showingProjectInd}}</p>
             <div class="about-text half">
               <h1>Snake</h1>
               <p>Another personal project of mine from time at General Assembly. It's a version of the classic game Snake built using jQuery.</p>
@@ -98,6 +102,7 @@
             </div>
           </template>
           <template v-else-if="aboutProject.br" slot="body">
+            <p>{{showingProjectInd}}</p>
             <div class="about-text">
               <h1>Beer Rater</h1>
               <div class="text-left-wrap">
@@ -180,6 +185,23 @@ export default {
         i++;
       }
       return newProjects;
+    },
+    showingProjectInd: function() {
+      const codes = Object.keys(this.aboutProject),
+      projects = this.projects;
+      let shown,
+      index;
+      codes.forEach(code => {
+        if (!!this.aboutProject[code]) {
+           shown = code;
+        }
+      });
+      projects.forEach((project, i) => {
+        if (project.code === shown) {
+          index = i;
+        }
+      });
+      return index;
     }
   }
 };
