@@ -1,5 +1,5 @@
 <template>
-  <div :class="['project-' + project.code, { 'highlighted': highlighted }]">
+  <div :class="'project-' + project.code">
     <img :src="project.img1">
     <img :src="project.img2">
     <div>
@@ -16,10 +16,6 @@ export default {
   props: {
     project: {
       type: Object,
-      required: true
-    },
-    highlighted: {
-      type: Boolean,
       required: true
     }
   },
