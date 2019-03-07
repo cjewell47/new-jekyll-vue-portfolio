@@ -7,116 +7,41 @@
     </p>
     <div class="projects-container">
       <transition name="fade">
-        <about-project v-if="showAbout" v-bind:project="projects[showingProjectInd]" @close="() => closeAbout()">
-          <!-- <template v-if="aboutProject.bl" slot="body">
-            <div class="placeholder"></div>
-            <div class="about-text">
-              <h1>Blend Life</h1>
-              <p class="back-link" @click="() => closeAbout()">
-                <span>Back</span>
-              </p>
-              <br>
-              <a href="https://intense-dusk-18560.herokuapp.com/" target="_blank">
-                <span>See it here</span>
-              </a>
-              <a href="https://github.com/cjewell47/blend-life-client" target="_blank">
-                <span>Visit the client side repo</span>
-              </a>
-              <a href="https://github.com/cjewell47/blend-life-api" target="_blank">
-                <span>Visit the API repo</span>
-              </a>
-            </div>
-            <div class="about-text">
-              <p>This was a personal project I built, while at General Assembly. It is a fully authenticated app for submitting and sharing smoothie recipes, built with an AngularJS front end, a Ruby on Rails back end, and hosted on Heroku.</p>
-              <p>The aims for this project were to:</p>
-              <ul>
-                <li>Connect your Rails back-end to an SQL database and interact with it</li>
-                <li>Create at least two models in the SQL database, one being a user model</li>
-                <li>Have user authentication where the user's details are stored in the User model in the database</li>
-                <li>Create API routes with CRUD functionality using Rails that are to be consumed by the AngularJS front-end</li>
-              </ul>
-            </div>
+        <about-project
+          v-if="showAbout"
+          v-bind:project="projects[showingProjectInd]"
+          @close="() => closeAbout()"
+        >
+          <template v-if="aboutProject === 'bl'" slot="body">
+            <p>This was a personal project I built, while at General Assembly. It is a fully authenticated app for submitting and sharing smoothie recipes, built with an AngularJS front end, a Ruby on Rails back end, and hosted on Heroku.</p>
+            <p>The aims for this project were to:</p>
+            <ul>
+              <li>Connect your Rails back-end to an SQL database and interact with it</li>
+              <li>Create at least two models in the SQL database, one being a user model</li>
+              <li>Have user authentication where the user's details are stored in the User model in the database</li>
+              <li>Create API routes with CRUD functionality using Rails that are to be consumed by the AngularJS front-end</li>
+            </ul>
           </template>
-          <template v-else-if="aboutProject.ffp" slot="body">
-            <div class="placeholder"></div>
-            <div class="about-text">
-              <h1>Financial Fitness Plan</h1>
-              <p class="back-link" @click="() => closeAbout()">
-                <span>Back</span>
-              </p>
-              <br>
-              <a href="https://www.experian.co.uk/consumer/financial-fitness-plan/" target="_blank">
-                <span>See it here</span>
-              </a>
-              <p>This was a project built for Experian. It is a tool designed to recommend which financial products might be best for you, based on your current financial situation and your financial goals.</p>
-              <p>I built this using vue.js, on top of a page on Experian's CMS. It is styled using a slimmed down version of Experian's scss, with some styling also done within the vue components.</p>
-            </div>
+          <template v-else-if="aboutProject === 'ffp'" slot="body">
+            <p>This was a project built for Experian. It is a tool designed to recommend which financial products might be best for you, based on your current financial situation and your financial goals.</p>
+            <p>I built this using vue.js, on top of a page on Experian's CMS. It is styled using a slimmed down version of Experian's scss, with some styling also done within the vue components.</p>
           </template>
-          <template v-else-if="aboutProject.pp" slot="body">
-            <div class="about-text half">
-              <h1>Paws &amp; Play</h1>
-              <p class="back-link" @click="() => closeAbout()">
-                <span>Back</span>
-              </p>
-              <br>
-              <a href="https://dogwalkingapp.herokuapp.com/" target="_blank">
-                <span>See it here</span>
-              </a>
-              <br>
-              <a href="https://github.com/cjewell47/paws-and-play" target="_blank">
-                <span>Visit the repo</span>
-              </a>
-            </div>
-            <div class="about-text half mt-30">
-              <p>This was another personal project I built while at General Assembly. It is an application designed to match dog walkers with dog owners who need them. It is a MEAN stack application (MongoDB, Express.js, AngularJS, node.js), and was styled using Bootstrap.</p>
-              <p>The aims for this project were:</p>
-              <ul>
-                <li>Use Mongo &amp; Express to build an API and a front-end that consumes it</li>
-                <li>Create an API with CRUD functionality using at least 2 related models, one of which should be a user</li>
-              </ul>
-            </div>
-            <div class="placeholder"></div>
+          <template v-else-if="aboutProject === 'pp'" slot="body">
+            <p>This was another personal project I built while at General Assembly. It is an application designed to match dog walkers with dog owners who need them. It is a MEAN stack application (MongoDB, Express.js, AngularJS, node.js), and was styled using Bootstrap.</p>
+            <p>The aims for this project were:</p>
+            <ul>
+              <li>Use Mongo &amp; Express to build an API and a front-end that consumes it</li>
+              <li>Create an API with CRUD functionality using at least 2 related models, one of which should be a user</li>
+            </ul>
           </template>
-          <template v-else-if="aboutProject.sn" slot="body">
-            <div class="about-text half">
-              <h1>Snake</h1>
-              <p>Another personal project of mine from time at General Assembly. It's a version of the classic game Snake built using jQuery.</p>
-              <p>The snake is continually moving, the player directs the snake around the grid with the arrow keys. If the snake collides with the wall or with itself it dies. Food appears on grid at timed intervals, when the player directs the snake into the food the player gains 1 point and the snake grows one cell longer. There are three speeds or difficulties the player can select to play the game, fast, medium and slow.</p>
-            </div>
-            <div class="about-text half mt-30">
-              <p class="back-link" @click="() => closeAbout()">
-                <span>Back</span>
-              </p>
-              <br>
-              <a href="https://stormy-forest-65305.herokuapp.com/" target="_blank">
-                <span>See it here</span>
-              </a>
-              <br>
-              <a href="https://github.com/cjewell47/snake" target="_blank">
-                <span>Visit the repo</span>
-              </a>
-            </div>
+          <template v-else-if="aboutProject === 'sn'" slot="body">
+            <p>Another personal project of mine from time at General Assembly. It's a version of the classic game Snake built using jQuery.</p>
+            <p>The snake is continually moving, the player directs the snake around the grid with the arrow keys. If the snake collides with the wall or with itself it dies. Food appears on grid at timed intervals, when the player directs the snake into the food the player gains 1 point and the snake grows one cell longer. There are three speeds or difficulties the player can select to play the game, fast, medium and slow.</p>
           </template>
-          <template v-else-if="aboutProject.br" slot="body">
-            <div class="about-text">
-              <h1>Beer Rater</h1>
-              <div class="text-left-wrap">
-                <p class="back-link" @click="() => closeAbout()">
-                  <span>Back</span>
-                </p>
-                <br>
-                <a href="https://evening-refuge-83030.herokuapp.com/" target="_blank">
-                  <span>See it here</span>
-                </a>
-                <br>
-                <a href="https://github.com/cjewell47/beer-rater" target="_blank">
-                  <span>Visit the repo</span>
-                </a>
-              </div>
-              <p>This was an early project I built while at General Assembly. It is a RESTful app for users to log in, upload, rate and discuss different beers. I used an open BrewDog API to populate it to begin with.</p>
-              <p>The app is authenticated and has 2 models, one representing the users and the other representing the beers, which comes with full CRUD functionality. It was built with MongoDB, Express.js, Node.js, and styled using Bootstrap CSS.</p>
-            </div>
-          </template> -->
+          <template v-else-if="aboutProject === 'br'" slot="body">
+            <p>This was an early project I built while at General Assembly. It is a RESTful app for users to log in, upload, rate and discuss different beers. I used an open BrewDog API to populate it to begin with.</p>
+            <p>The app is authenticated and has 2 models, one representing the users and the other representing the beers, which comes with full CRUD functionality. It was built with MongoDB, Express.js, Node.js, and styled using Bootstrap CSS.</p>
+          </template>
         </about-project>
       </transition>
       <div class="projects-image-container">

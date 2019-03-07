@@ -1,21 +1,26 @@
 <template>
   <div id="about-project">
+    <img :src="project.img2" :alt="'screenshot of ' + project.name ">
     <div class="about-text">
       <h1>{{ project.name }}</h1>
       <p class="back-link" @click="$emit('close')">
         <span>Back</span>
       </p>
+      <br>
       <a :href="project.link" target="_blank">
         <span>See it here</span>
       </a>
+      <br v-if="project.link2">
       <a v-if="project.link2" :href="project.link2.link" target="_blank">
         <span>{{ project.link2.name }}</span>
       </a>
+      <br v-if="project.link3">
       <a v-if="project.link3" :href="project.link3.link" target="_blank">
         <span>{{ project.link3.name }}</span>
       </a>
+      <br>
+      <slot name="body"></slot>
     </div>
-    <slot name="body"></slot>
   </div>
 </template>
 
@@ -42,11 +47,17 @@ $gray: darkslategrey;
   z-index: 3;
   background: #fff;
   display: block;
+  img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    float: right;
+    margin: 0 0 10px 10px;
+  }
 }
 
 .about-text {
   padding: 0 30px 40px 30px;
-  height: 250px;
   box-sizing: border-box;
   h1 {
     padding-top: 20px;
