@@ -1,32 +1,57 @@
 [
     {
         "code": "bl",
+        "name": "Blend Life",
         "img1": "img/BlendLifeBW-min.png",
         "img2": "img/BlendLife-min.png",
-        "link": "https://intense-dusk-18560.herokuapp.com/" 
+        "link": "https://intense-dusk-18560.herokuapp.com/", 
+        "link2": {
+            "link": "https://github.com/cjewell47/blend-life-client",
+            "name": "Visit the client side repo"
+        },
+        "link3": {
+            "link": "https://github.com/cjewell47/blend-life-api",
+            "name": "Visit the API repo"
+        }
     },
     {
         "code": "ffp",
+        "name": "Financial Fitness Plan",
         "img1": "img/ffpbw.png",
         "img2": "img/ffp.png",
         "link": "https://www.experian.co.uk/consumer/financial-fitness-plan/"
     },
     {
         "code": "pp",
+        "name": "Paws and Play",
         "img1": "img/PawsAndPlayBW-min.png",
         "img2": "img/PawsAndPlay-min.png",
-        "link": "https://dogwalkingapp.herokuapp.com/"
+        "link": "https://dogwalkingapp.herokuapp.com/",
+        "link2": {
+            "name": "Visit the repo",
+            "link": "https://github.com/cjewell47/paws-and-play"
+        }
     },
     {
         "code": "sn",
+        "name": "Snake",
         "img1": "img/SnakeBW-min.png",
         "img2": "img/Snake-min.png",
-        "link": "https://stormy-forest-65305.herokuapp.com/"
+        "link": "https://stormy-forest-65305.herokuapp.com/",
+        "link2": {
+            "name": "Visit the repo",
+            "link": "https://github.com/cjewell47/snake"
+        }
     },
     {
         "code": "br",
+        "name": "Beer Rater",
         "img1": "img/BeerRaterBW-min.png",
         "img2": "img/BeerRater-min.png",
-        "link": "https://evening-refuge-83030.herokuapp.com/"
+        "link": "https://evening-refuge-83030.herokuapp.com/",
+        "link2": {
+            "name": "Visit the repo",
+            "link": "https://github.com/cjewell47/beer-rater"
+        }
     }
 ]

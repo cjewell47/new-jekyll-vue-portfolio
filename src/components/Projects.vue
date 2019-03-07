@@ -7,8 +7,8 @@
     </p>
     <div class="projects-container">
       <transition name="fade">
-        <about-project v-if="showAbout" v-bind:project="aboutProject">
-          <template v-if="aboutProject.bl" slot="body">
+        <about-project v-if="showAbout" v-bind:project="projects[showingProjectInd]" @close="() => closeAbout()">
+          <!-- <template v-if="aboutProject.bl" slot="body">
             <div class="placeholder"></div>
             <div class="about-text">
               <h1>Blend Life</h1>
@@ -116,7 +116,7 @@
               <p>This was an early project I built while at General Assembly. It is a RESTful app for users to log in, upload, rate and discuss different beers. I used an open BrewDog API to populate it to begin with.</p>
               <p>The app is authenticated and has 2 models, one representing the users and the other representing the beers, which comes with full CRUD functionality. It was built with MongoDB, Express.js, Node.js, and styled using Bootstrap CSS.</p>
             </div>
-          </template>
+          </template> -->
         </about-project>
       </transition>
       <div class="projects-image-container">
@@ -144,29 +144,18 @@ export default {
   },
   data() {
     return {
-      aboutProject: {
-        bl: false,
-        ffp: false,
-        pp: false,
-        sn: false,
-        br: false
-      },
+      aboutProject: false,
       showAbout: false,
       projects: projects
     };
   },
   methods: {
     closeAbout: function() {
-      (this.showAbout = false),
-        Object.keys(this.aboutProject).forEach(
-          v => (this.aboutProject[v] = false)
-        );
+      this.showAbout = false;
+      this.aboutProject = false;
     },
     openAbout: function(project) {
-      Object.keys(this.aboutProject).forEach(
-        v => (this.aboutProject[v] = false)
-      );
-      this.aboutProject[project] = true;
+      this.aboutProject = project;
       this.showAbout = true;
     }
   },
@@ -181,16 +170,9 @@ export default {
       return newProjects;
     },
     showingProjectInd: function() {
-      const codes = Object.keys(this.aboutProject),
-        projects = this.projects;
-      let shown, index;
-      codes.forEach(code => {
-        if (!!this.aboutProject[code]) {
-          shown = code;
-        }
-      });
+      let index;
       projects.forEach((project, i) => {
-        if (project.code === shown) {
+        if (project.code === this.aboutProject) {
           index = i;
         }
       });
@@ -254,67 +236,6 @@ h1 {
     top: -260px;
     left: -260px;
     transform: rotate(315deg);
-  }
-}
-
-.about-text {
-  padding: 0 30px 40px 30px;
-  height: 250px;
-  box-sizing: border-box;
-  h1 {
-    padding-top: 20px;
-    margin-top: 0;
-  }
-  a,
-  .back-link {
-    text-decoration: none;
-    position: relative;
-    overflow: hidden;
-    margin: 0;
-    display: inline-flex;
-    padding: 8px;
-    cursor: pointer;
-    span {
-      color: $gray;
-      z-index: 1;
-    }
-    &::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 300%;
-      height: 100%;
-      background-image: linear-gradient(
-        90deg,
-        lighten($gray, 5%) 33.33%,
-        transparent 66.66%
-      );
-      -webkit-transform: translateX(-66.66%);
-      transform: translateX(-66.66%);
-      z-index: 0;
-      transition: all 0.75s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    &:hover {
-      span {
-        color: #000;
-      }
-      &::before {
-        -webkit-transform: translateX(0);
-        transform: translateX(0);
-      }
-    }
-  }
-  .text-left-wrap {
-    width: 40%;
-    float: left;
-  }
-  &.half {
-    width: 250px;
-    float: left;
-  }
-  &.mt-30 {
-    margin-top: 30px;
   }
 }
 
